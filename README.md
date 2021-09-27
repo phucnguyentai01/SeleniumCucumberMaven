@@ -91,7 +91,7 @@ There is a customization in the choice between running sequentially or running i
         "src/test/java/TestRunner.java" will be triggered.
         In "src/test/resources/features", all scenarios wil run one-by-one sequentially.
 
-* Parallel: please comment the "maven-surefire-plugin".
+* Parallel: please uncomment the "maven-surefire-plugin".
 
         "src/test/java/stepDefinitions/ParallelRun" will be triggered.
         In "src/test/resources/parallel", 1 feature file executes on 1 thread, all threads will be run parallelly.
