@@ -19,6 +19,7 @@ Framework Architecture
 		|	|	|_FindPageSteps.java
 		|	|	|_CityPageSteps.java
 		|	|	|_Hooks.java
+		|	|	|_ParallelRun
 		|	|_utilities
 		|	|	|_BaseClass.java
 		|	|	|_DriverFactory.java
@@ -27,7 +28,13 @@ Framework Architecture
 		|_src/test/resources
 		|	|_features
 		|	|	|_SearchCity.feature
+		|	|_parallel
+		|	|	|_SearchCity1.feature
+		|	|	|_SearchCity2.feature
+		|	|	|_SearchCity3.feature
 		|_reports
+		|_config.properties
+		|_pom.xml
 
 * **drivers** - this package contains webdriver files of multi browsers on the particular platforms. The webdriver file locations are defined in src/test/java/utilities/DriverFactory.java
 * **src/test/java/pageObjects** - defines the locators and methods for all Page Objectss
@@ -36,6 +43,7 @@ Framework Architecture
 * **src/test/java/TestRunner.java** - configure your glue code location (step defintions), define test result output format.(html, json, xml)
 * **src/test/resources/features** - all the cucumber features files (files .feature ext) goes here.
 * **repors** - HTML reports are separated into several directories named by running time and browser name.
+* **config.properties** - user customizes the "url" and "timeout".
 
 ---
 
@@ -76,7 +84,22 @@ Supported platforms:
 * iOS
 * Ubuntu
 
-#### 2. Test Result
+#### 2. Single or Multi threading choice
+There is a customization in the choice between running sequentially or running in parallel.
+* Sequence: please comment the "maven-surefire-plugin".
+
+        "src/test/java/TestRunner.java" will be triggered.
+        In "src/test/resources/features", all scenarios wil run one-by-one sequentially.
+
+* Parallel: please comment the "maven-surefire-plugin".
+
+        "src/test/java/stepDefinitions/ParallelRun" will be triggered.
+        In "src/test/resources/parallel", 1 feature file executes on 1 thread, all threads will be run parallelly.
+
+    ![image1](images/report5.PNG)
+    ![image1](images/report6.PNG)
+
+#### 3. Test Result
 * See the result inside `reports/<Date_time_browser directory>/cucumber-html-reports`
 * Open "overview-features" or any html file in your browser
 * Click on the site head menu to navigate to other html page
