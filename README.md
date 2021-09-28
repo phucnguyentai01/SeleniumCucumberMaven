@@ -19,16 +19,16 @@ Framework Architecture
 		|	|	|_FindPageSteps.java
 		|	|	|_CityPageSteps.java
 		|	|	|_Hooks.java
-		|	|	|_ParallelRun
 		|	|_utilities
 		|	|	|_BaseClass.java
 		|	|	|_DriverFactory.java
 		|	|	|_PropertiesReader.java
 		|	|_TestRunner.java
+		|	|_TestRunner_parallel.java
 		|_src/test/resources
 		|	|_features
 		|	|	|_SearchCity.feature
-		|	|_parallel
+		|	|_features_parallel
 		|	|	|_SearchCity1.feature
 		|	|	|_SearchCity2.feature
 		|	|	|_SearchCity3.feature
@@ -86,18 +86,17 @@ Supported platforms:
 
 #### 2. Single or Multi threading choice
 There is a customization in the choice between running sequentially or running in parallel.
-* Sequence: please comment the "maven-surefire-plugin".
+* Sequence: declare "<include>**/TestRunner.java</include>" at "maven-surefire-plugin" in pom.xml.
 
         "src/test/java/TestRunner.java" will be triggered.
         In "src/test/resources/features", all scenarios wil run one-by-one sequentially.
 
-* Parallel: please uncomment the "maven-surefire-plugin".
+* Parallel: declare "<include>**/TestRunner_parallel.java</include>" at  "maven-surefire-plugin" in pom.xml.
 
-        "src/test/java/stepDefinitions/ParallelRun" will be triggered.
-        In "src/test/resources/parallel", 1 feature file executes on 1 thread, all threads will be run parallelly.
+        "src/test/java/TestRunner_parallel" will be triggered.
+        In "src/test/resources/features_parallel", 1 feature file executes on 1 thread, all threads will be run parallelly.
 
     ![image1](images/report5.PNG)
-    ![image1](images/report6.PNG)
 
 #### 3. Test Result
 * See the result inside `reports/<Date_time_browser directory>/cucumber-html-reports`
