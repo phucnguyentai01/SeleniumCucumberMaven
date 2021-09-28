@@ -28,7 +28,7 @@ public class DriverFactory {
             }
 
             ChromeOptions options = new ChromeOptions();
-            //options.addArguments("--headless");
+            options.addArguments("--headless");
             options.addArguments("window-size=1280x800");
             options.addArguments("start-maximized"); // open Browser in maximized mode
             options.addArguments("--disable-infobars"); // disabling infobars
@@ -51,7 +51,7 @@ public class DriverFactory {
             }
 
             FirefoxOptions options = new FirefoxOptions();
-            //options.addArguments("--headless");
+            options.addArguments("--headless");
             options.addArguments("window-size=1280x800");
             options.addArguments("start-maximized"); // open Browser in maximized mode
             options.addArguments("--disable-infobars"); // disabling infobars
